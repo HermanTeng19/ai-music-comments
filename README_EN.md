@@ -21,6 +21,7 @@ ai-music-comments/
 - Generated reviews are suitable for social media platforms like Xiaohongshu, with around 300-500 words
 - Reviews include analysis of artistic features, performance standards, historical significance, and personal impressions
 - Reviews are saved in Markdown format in the `musicComments` directory, with filenames as `[song_name].md`
+- By default, existing reviews will be overwritten with newly generated content
 
 ## Usage Instructions
 
@@ -61,6 +62,21 @@ After activating the virtual environment, you can run:
 python music_review_generator.py
 ```
 
+### Command Line Options
+
+The script supports several command line options:
+
+```bash
+python music_review_generator.py [--gui] [--file FILE_PATH] [--output-dir DIR_PATH] [--keep-thinking] [--simulation]
+```
+
+Options:
+- `--gui`: Launch the graphical user interface instead of command line mode
+- `--file`: Specify the path to the markdown file containing music data (default: `top25Music_douban.md`)
+- `--output-dir`: Specify the directory for saving generated reviews (default: `musicComments`)
+- `--keep-thinking`: Preserve the AI's thinking process in the generated reviews
+- `--simulation`: Run in simulation mode without making actual API calls (useful for testing)
+
 ## API Rate Limiting
 
 While the NVIDIA DeepSeek R1 API doesn't have explicit hard rate limits in the official documentation, to avoid service overload and response delays, the script implements the following strategies:
@@ -73,5 +89,5 @@ While the NVIDIA DeepSeek R1 API doesn't have explicit hard rate limits in the o
 ## Notes
 
 - Generating reviews may take a considerable amount of time, please be patient
-- The script supports checkpoint resume, reviews that have already been generated will not be regenerated
+- All existing reviews will be overwritten with newly generated content
 - All operations are logged in the `music_review_generator.log` file 

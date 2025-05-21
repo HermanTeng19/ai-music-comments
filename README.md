@@ -39,4 +39,10 @@ This project uses the NVIDIA DeepSeek R1 model to generate professional music re
 3. 运行脚本:
    ```bash
    python music_review_generator.py
-   ``` 
+   ```
+
+## Command Line Options / 命令行选项
+
+```bash
+python music_review_generator.py [--gui] [--file FILE_PATH] [--output-dir DIR_PATH] [--keep-thinking] [--simulation]
+``` 

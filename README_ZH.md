@@ -21,6 +21,7 @@ ai-music-comments/
 - 生成的评论适合在小红书等社交平台发表，字数在 300-500 字左右
 - 评论内容包括音乐的艺术特点、表演水准、历史意义和个人感受
 - 评论文件以 Markdown 格式保存在 `musicComments` 目录下，文件名为 `[歌曲名].md`
+- 默认情况下，已存在的评论文件会被新生成的内容覆盖
 
 ## 使用方法
 
@@ -61,6 +62,21 @@ set NVIDIA_API_KEY=你的_API_密钥
 python music_review_generator.py
 ```
 
+### 命令行选项
+
+脚本支持多种命令行选项：
+
+```bash
+python music_review_generator.py [--gui] [--file 文件路径] [--output-dir 输出目录] [--keep-thinking] [--simulation]
+```
+
+选项说明：
+- `--gui`: 启动图形用户界面而非命令行模式
+- `--file`: 指定包含音乐数据的Markdown文件路径（默认：`top25Music_douban.md`）
+- `--output-dir`: 指定生成评论的保存目录（默认：`musicComments`）
+- `--keep-thinking`: 在生成的评论中保留AI的思考过程
+- `--simulation`: 在模拟模式下运行，不实际调用API（用于测试）
+
 ## API 速率限制
 
 NVIDIA DeepSeek R1 API 在官方文档中没有明确的硬性速率限制，但为了避免服务过载和响应延迟，脚本采用了以下策略：
@@ -73,5 +89,5 @@ NVIDIA DeepSeek R1 API 在官方文档中没有明确的硬性速率限制，但
 ## 注意事项
 
 - 生成评论可能需要较长时间，请耐心等待
-- 脚本支持断点续传，已生成的评论不会重复生成
+- 所有已存在的评论文件会被新生成的内容覆盖
 - 所有操作日志会记录在 `music_review_generator.log` 文件中 
